@@ -37,6 +37,11 @@ class BsonBinary extends BsonObject {
   // ignore: non_constant_identifier_names
   static final SUBTYPE_USER_DEFINED = subtypeUserDefined;
 
+  static final subtypeInt16 = 130;
+  @Deprecated('use "subtypeUuid"')
+  // ignore: non_constant_identifier_names
+  static final SUBTYPE_INT16 = subtypeInt16;
+
   // Use a list as jump-table. It is faster than switch and if.
   static const int char0 = 48;
   static const int char1 = 49;
@@ -97,6 +102,8 @@ class BsonBinary extends BsonObject {
     log(data.subType.toString(), name: "Subtype");
     if (data.subType == subtypeUuid) {
       return BsonUuid.from(data.byteList);
+    } else if (data.subType == subtypeInt16) {
+      return BsonBinary.from(data.byteList);
     } else if (data.subType != subtypeBinary) {
       throw ArgumentError(
           'Binary subtype "${data.subType}" is not yet managed');
