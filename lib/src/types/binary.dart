@@ -94,6 +94,7 @@ class BsonBinary extends BsonObject {
 
   factory BsonBinary.fromBuffer(BsonBinary buffer) {
     var data = extractData(buffer);
+    log(data.subType.toString(), name: "Subtype");
     if (data.subType == subtypeUuid) {
       return BsonUuid.from(data.byteList);
     } else if (data.subType != subtypeBinary) {
@@ -261,6 +262,12 @@ class BsonBinary extends BsonObject {
   }
 
   int readByte() => byteList[offset++];
+
+  /// Int16 read implementation
+  int readInt16() {
+    offset += 2;
+    return byteArray.getInt16(offset - 2, Endian.little);
+  }
 
   int readInt32() {
     offset += 4;
