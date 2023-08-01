@@ -103,7 +103,7 @@ class BsonBinary extends BsonObject {
     if (data.subType == subtypeUuid) {
       return BsonUuid.from(data.byteList);
     } else if (data.subType == subtypeInt16) {
-      return BsonBinary.from(data.byteList);
+      return BsonBinary.from(data.byteList, subType: data.subType);
     } else if (data.subType != subtypeBinary) {
       throw ArgumentError(
           'Binary subtype "${data.subType}" is not yet managed');
