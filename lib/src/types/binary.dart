@@ -272,7 +272,7 @@ class BsonBinary extends BsonObject {
   /// Int16 read implementation
   int readInt16() {
     offset += 2;
-    return byteArray.getInt16(offset - 2, Endian.little);
+    return byteArray.getInt16(offset - 2, Endian.big);
   }
 
   int readInt32() {
