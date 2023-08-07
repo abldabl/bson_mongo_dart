@@ -13,8 +13,8 @@ class BsonMap extends BsonObject {
     var typeByte = buffer.readByte();
     while (typeByte != 0) {
       var key = buffer.readCString();
-      log(typeByte.toString(), name: "TypeByte");
-      log(key.toString(), name: "Key");
+      // log(typeByte.toString(), name: "TypeByte");
+      // log(key.toString(), name: "Key");
       ret[key] = BsonObject.fromTypeByteAndBuffer(typeByte, buffer).value;
       typeByte = buffer.readByte();
     }

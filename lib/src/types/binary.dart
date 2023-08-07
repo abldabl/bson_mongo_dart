@@ -99,7 +99,7 @@ class BsonBinary extends BsonObject {
 
   factory BsonBinary.fromBuffer(BsonBinary buffer) {
     var data = extractData(buffer);
-    log(data.subType.toString(), name: "Subtype");
+    // log(data.subType.toString(), name: "Subtype");
     if (data.subType == subtypeUuid) {
       return BsonUuid.from(data.byteList);
     } else if (data.subType == subtypeInt16) {
