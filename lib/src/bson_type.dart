@@ -73,6 +73,9 @@ const bsonDataDbPointer = 12;
 /// 32 bit Integer BSON Type
 const bsonDataInt = 16;
 
+/// 16 bit Integer BSON Type
+const bsonDataInt16Array = 130;
+
 /// @classconstant BSON_DATA_LONG
 const bsonDataLong = 18;
 
@@ -135,6 +138,8 @@ abstract class BsonObject {
     switch (typeByte) {
       case bsonDataInt:
         return BsonInt.fromBuffer(buffer);
+      case bsonDataInt16Array:
+        return BsonArray.fromBuffer(buffer);
       case bsonDataLong:
         return BsonLong.fromBuffer(buffer);
       case bsonDataNumber:
