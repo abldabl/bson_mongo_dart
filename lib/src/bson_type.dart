@@ -138,8 +138,8 @@ abstract class BsonObject {
     switch (typeByte) {
       case bsonDataInt:
         return BsonInt.fromBuffer(buffer);
-      // case bsonDataInt16Array:
-      //   return BsonArray.fromBuffer(buffer);
+      case bsonDataInt16Array:
+        return BsonArray.fromBuffer(buffer);
       case bsonDataLong:
         return BsonLong.fromBuffer(buffer);
       case bsonDataNumber:
