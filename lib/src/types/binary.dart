@@ -235,6 +235,12 @@ class BsonBinary extends BsonObject {
     }
   }
 
+  void writeInt16(int value,
+      {int numOfBytes = 2, endianness = Endian.little, bool signed = false}) {
+    encodeInt(offset, value, numOfBytes, endianness, signed);
+    offset += numOfBytes;
+  }
+
   void writeInt(int value,
       {int numOfBytes = 4, endianness = Endian.little, bool signed = false}) {
     encodeInt(offset, value, numOfBytes, endianness, signed);

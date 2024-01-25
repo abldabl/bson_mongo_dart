@@ -36,3 +36,22 @@ class BsonLong extends BsonObject {
   @override
   void packValue(BsonBinary buffer) => buffer.writeFixInt64(data);
 }
+
+class BsonInt16 extends BsonObject {
+  BsonInt16(this.data);
+
+  BsonInt16.fromBuffer(BsonBinary buffer) : data = extractData(buffer);
+
+  int data;
+
+  static int extractData(BsonBinary buffer) => buffer.readInt16();
+
+  @override
+  int get value => data;
+  @override
+  int byteLength() => 2;
+  @override
+  int get typeByte => bsonDataInt16;
+  @override
+  void packValue(BsonBinary buffer) => buffer.writeInt16(data);
+}

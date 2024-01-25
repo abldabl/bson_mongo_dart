@@ -1,7 +1,6 @@
 library bson;
 
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:bson/src/classes/timestamp.dart';
@@ -30,6 +29,7 @@ part 'src/types/dbpointer.dart';
 part 'src/types/dbref.dart';
 part 'src/types/double.dart';
 part 'src/types/int.dart';
+part 'src/types/int_16_array.dart';
 part 'src/types/map.dart';
 part 'src/types/min_max_keys.dart';
 part 'src/types/null.dart';

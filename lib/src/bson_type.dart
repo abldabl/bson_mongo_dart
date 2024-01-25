@@ -74,6 +74,9 @@ const bsonDataDbPointer = 12;
 const bsonDataInt = 16;
 
 /// 16 bit Integer BSON Type
+const bsonDataInt16 = 133;
+
+/// 16 bit Integer Array BSON Type
 const bsonDataInt16Array = 130;
 
 /// @classconstant BSON_DATA_LONG
@@ -116,6 +119,8 @@ abstract class BsonObject {
       return BsonObjectId(value);
     } else if (value is Map) {
       return BsonMap(Map<String, dynamic>.from(value));
+    } else if (value is Int16List) {
+      return BsonInt16Array(value);
     } else if (value is List) {
       return BsonArray(value);
     } else if (value == null) {
@@ -138,8 +143,10 @@ abstract class BsonObject {
     switch (typeByte) {
       case bsonDataInt:
         return BsonInt.fromBuffer(buffer);
+      case bsonDataInt16:
+        return BsonInt16.fromBuffer(buffer);
       case bsonDataInt16Array:
-        return BsonArray.fromBuffer(buffer);
+        return BsonInt16Array.fromBuffer(buffer);
       case bsonDataLong:
         return BsonLong.fromBuffer(buffer);
       case bsonDataNumber:
